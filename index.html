@@ -138,11 +138,36 @@
 
 <p>7.2 clazz = null 调用this.deserializers.findClass(typeName);<img src="/2020/09/10/Fastjson-1-2-48-RCE%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0%E4%B8%8E%E5%88%86%E6%9E%90/27.png" class></p>
 <p>7.3 各种扫描循环<img src="/2020/09/10/Fastjson-1-2-48-RCE%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0%E4%B8%8E%E5%88%86%E6%9E%90/28.png" class></p>
+<p>8.0 进入ObjectDeserializer deserializer = this.config.getDeserializer(clazz); 后 objVal 获取到恶意类com.sun.rowset.JdbcRowSetImpl<img src="/2020/09/10/Fastjson-1-2-48-RCE%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0%E4%B8%8E%E5%88%86%E6%9E%90/29.png" class title="恶意类被获取"></p>
+<p>8.1 在各种判断后来到TypeUtils.loadClass(strVal, parser.getConfig().getDefaultClassLoader()); 判断前文提到的L和[ <img src="/2020/09/10/Fastjson-1-2-48-RCE%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0%E4%B8%8E%E5%88%86%E6%9E%90/30.png" class title="判断"></p>
+<p>8.2 此时 cache为真，恶意类会放入mapping中进行缓存<img src="/2020/09/10/Fastjson-1-2-48-RCE%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0%E4%B8%8E%E5%88%86%E6%9E%90/31.png" class title="cache为真"></p>
+<img src="/2020/09/10/Fastjson-1-2-48-RCE%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0%E4%B8%8E%E5%88%86%E6%9E%90/32.png" class title="缓存">
+
+<p>返回clazz 是恶意类com.sun.rowset.JdbcRowSetImpl</p>
+<p>8.3  相比7.1截图可知，此时className 已经变为恶意类，且cache在这默认为真<img src="/2020/09/10/Fastjson-1-2-48-RCE%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0%E4%B8%8E%E5%88%86%E6%9E%90/33.png" class></p>
+<p>9.0 在一些列扫描后 key = rand2<img src="/2020/09/10/Fastjson-1-2-48-RCE%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0%E4%B8%8E%E5%88%86%E6%9E%90/34.png" class title="rand2"></p>
+<p>9.1 扫描到rand2 的 @type<img src="/2020/09/10/Fastjson-1-2-48-RCE%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0%E4%B8%8E%E5%88%86%E6%9E%90/35.png" class></p>
+<p>9.2 之前缓存的恶意类出现了<img src="/2020/09/10/Fastjson-1-2-48-RCE%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0%E4%B8%8E%E5%88%86%E6%9E%90/36.png" class></p>
+<p>9.3恶意类绕过各种检查 ，满足expectClass == null 直接到clazz = TypeUtils.getClassFromMapping(typeName);<img src="/2020/09/10/Fastjson-1-2-48-RCE%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0%E4%B8%8E%E5%88%86%E6%9E%90/37.png" class></p>
+<p>9.4 进入后依旧提取缓存的恶意类<img src="/2020/09/10/Fastjson-1-2-48-RCE%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0%E4%B8%8E%E5%88%86%E6%9E%90/38.png" class></p>
+<p>9.5此时clazz由原本的null 变为恶意类<img src="/2020/09/10/Fastjson-1-2-48-RCE%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0%E4%B8%8E%E5%88%86%E6%9E%90/39.png" class></p>
+<p>9.6 <img src="/2020/09/10/Fastjson-1-2-48-RCE%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0%E4%B8%8E%E5%88%86%E6%9E%90/41.png" class></p>
+<p>9.7 dataSourceName</p>
+
+
+<p>9.8 扫描到 ldap<img src="/2020/09/10/Fastjson-1-2-48-RCE%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0%E4%B8%8E%E5%88%86%E6%9E%90/44.png" class></p>
+<p>9.9 此时的object value fieldName都已经准备好了<img src="/2020/09/10/Fastjson-1-2-48-RCE%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0%E4%B8%8E%E5%88%86%E6%9E%90/45.png" class></p>
+<p>9.9.1 setValue(object, value); 执行恶意类 和 ldap<img src="/2020/09/10/Fastjson-1-2-48-RCE%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0%E4%B8%8E%E5%88%86%E6%9E%90/46.png" class></p>
+<p>10.0 method执行恶意类 通过dataSourceName 抛出异常以调用Exception类中的getMessage方法，触发漏洞。</p>
+<img src="/2020/09/10/Fastjson-1-2-48-RCE%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0%E4%B8%8E%E5%88%86%E6%9E%90/48.png" class>
+
+<p>11.0 执行this.connect()<img src="/2020/09/10/Fastjson-1-2-48-RCE%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0%E4%B8%8E%E5%88%86%E6%9E%90/49.png" class></p>
+<p>12.0 请求连接ldap，进行远程命令执行<img src="/2020/09/10/Fastjson-1-2-48-RCE%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0%E4%B8%8E%E5%88%86%E6%9E%90/50.png" class></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://alewong.github.io/2020/09/10/Fastjson-1-2-48-RCE%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0%E4%B8%8E%E5%88%86%E6%9E%90/" data-id="ckewmpc3l0000gkk89wxwgk4w" class="article-share-link">Share</a>
+      <a data-url="https://alewong.github.io/2020/09/10/Fastjson-1-2-48-RCE%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0%E4%B8%8E%E5%88%86%E6%9E%90/" data-id="ckewqecms0000fqk8585m54te" class="article-share-link">Share</a>
       
       
     </footer>
