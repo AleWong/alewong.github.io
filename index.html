@@ -87,17 +87,20 @@
 <p>​            “&quot;autoCommit&quot;: true” +</p>
 <p>​            “}” +</p>
 <p>​        “}”;</p>
+<img src="/2020/09/10/Fastjson-1-2-48-RCE%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0%E4%B8%8E%E5%88%86%E6%9E%90/1.png" class title="运行结果">
 
-<p><img src="/2020/09/10/Fastjson-1-2-48-RCE%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0%E4%B8%8E%E5%88%86%E6%9E%90/1.JPG" alt="运行payload结果"></p>
+
+
 <p>Exception in thread “main” com.alibaba.fastjson.JSONException: set property error, autoCommit<br>    at com.alibaba.fastjson.parser.deserializer.FieldDeserializer.setValue(FieldDeserializer.java:162)<br>    at com.alibaba.fastjson.parser.deserializer.DefaultFieldDeserializer.parseField(DefaultFieldDeserializer.java:124)<br>    at com.alibaba.fastjson.parser.deserializer.JavaBeanDeserializer.parseField(JavaBeanDeserializer.java:1078)<br>    at com.alibaba.fastjson.parser.deserializer.JavaBeanDeserializer.deserialze(JavaBeanDeserializer.java:773)<br>    at com.alibaba.fastjson.parser.deserializer.JavaBeanDeserializer.parseRest(JavaBeanDeserializer.java:1283)<br>    at com.alibaba.fastjson.parser.deserializer.FastjsonASMDeserializer_1_JdbcRowSetImpl.deserialze(Unknown Source)<br>    at com.alibaba.fastjson.parser.deserializer.JavaBeanDeserializer.deserialze(JavaBeanDeserializer.java:267)<br>    at com.alibaba.fastjson.parser.DefaultJSONParser.parseObject(DefaultJSONParser.java:384)<br>    at com.alibaba.fastjson.parser.DefaultJSONParser.parseObject(DefaultJSONParser.java:544)<br>    at com.alibaba.fastjson.parser.DefaultJSONParser.parse(DefaultJSONParser.java:1356)<br>    at com.alibaba.fastjson.parser.DefaultJSONParser.parse(DefaultJSONParser.java:1322)<br>    at com.alibaba.fastjson.JSON.parse(JSON.java:152)<br>    at com.alibaba.fastjson.JSON.parse(JSON.java:162)<br>    at com.alibaba.fastjson.JSON.parse(JSON.java:131)<br>    at com.example.FastjsonExp.main(FastjsonExp.java:24)<br>Caused by: java.lang.reflect.InvocationTargetException<br>    at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)<br>    at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)<br>    at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)<br>    at java.lang.reflect.Method.invoke(Method.java:483)<br>    at com.alibaba.fastjson.parser.deserializer.FieldDeserializer.setValue(FieldDeserializer.java:110)<br>    … 14 more<br>Caused by: java.sql.SQLException: JdbcRowSet (连接) JNDI 无法连接<br>    at com.sun.rowset.JdbcRowSetImpl.connect(JdbcRowSetImpl.java:634)<br>    at com.sun.rowset.JdbcRowSetImpl.setAutoCommit(JdbcRowSetImpl.java:4067)<br>    … 19 more</p>
 <p>Process finished with exit code 1</p>
+<img src="/2020/09/10/Fastjson-1-2-48-RCE%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0%E4%B8%8E%E5%88%86%E6%9E%90/2.png" class title="wireshark抓包">
+
 <p>测试DNSlog Wireshark抓包依旧成功，漏洞存在成立</p>
-<p><img src="https://github.com/AleWong/alewong.github.io/blob/master/2020/09/10/Fastjson-1-2-48-RCE%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0%E4%B8%8E%E5%88%86%E6%9E%90/2.png" alt="wireshark抓包"></p>
 <h2 id="二、漏洞分析"><a href="#二、漏洞分析" class="headerlink" title="二、漏洞分析"></a>二、漏洞分析</h2>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://alewong.github.io/2020/09/10/Fastjson-1-2-48-RCE%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0%E4%B8%8E%E5%88%86%E6%9E%90/" data-id="ckewgjew00000cjk8b44cg8yr" class="article-share-link">Share</a>
+      <a data-url="https://alewong.github.io/2020/09/10/Fastjson-1-2-48-RCE%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0%E4%B8%8E%E5%88%86%E6%9E%90/" data-id="ckewh1kqr0000k1k80jjtd81r" class="article-share-link">Share</a>
       
       
     </footer>
