@@ -2,14 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite-url/About-Me/index.html</loc>
+    <loc>http://yoursite-url/2020/09/10/Fastjson-1-2-48-RCE%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0%E4%B8%8E%E5%88%86%E6%9E%90/</loc>
     
     <lastmod>2020-09-10</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite-url/2020/09/10/Fastjson-1-2-48-RCE%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0%E4%B8%8E%E5%88%86%E6%9E%90/</loc>
+    <loc>http://yoursite-url/about/index.html</loc>
     
     <lastmod>2020-09-10</lastmod>
     
@@ -23,14 +23,14 @@
   </url>
   
   <url>
-    <loc>http://yoursite-url/archive/index.html</loc>
+    <loc>http://yoursite-url/categories/index.html</loc>
     
     <lastmod>2020-09-06</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite-url/categories/index.html</loc>
+    <loc>http://yoursite-url/archive/index.html</loc>
     
     <lastmod>2020-09-06</lastmod>
     

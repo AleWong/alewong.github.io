@@ -210,14 +210,14 @@
 
           
           <li>
-            <a href="/archive/">Archives</a>
+            <a href="/categories/">Categories</a>
           </li>
           
           
 
           
           <li>
-            <a href="/categories/">Categories</a>
+            <a href="/archive/">Archives</a>
           </li>
           
           
@@ -231,7 +231,7 @@
 
           
           <li>
-            <a href="/About-Me/">About Me</a>
+            <a href="/about/">About Me</a>
           </li>
           
           
@@ -287,10 +287,11 @@
 	<!-- Modified by Yu-Hsuan Yen -->
 <!-- Post Header -->
 
+  <!-- CDN: jsdelivr start -->
   <style type="text/css">
     header.intro-header {
        /*page*/
-        background-image: url('/img/header_img/archive_bg2.jpg');
+        background-image: url('https://cdn.jsdelivr.net/gh/V-Vincen/V-Vincen.github.io/img/header_img/archive_bg2.jpg');
       
     }
 
@@ -300,6 +301,7 @@
       }
     
   </style>
+  <!-- CDN: jsdelivr end -->
 
 
 
@@ -634,6 +636,29 @@
   <!-- ThemeColor end -->
 
 
+
+  <!-- CDN: jsdelivr start -->
+  <script type="text/javascript">
+    let imgsUrl = document.getElementsByTagName("img");
+    let imgUrl = Array.from(imgsUrl);
+
+    let jsdelivr = "https://cdn.jsdelivr.net/gh/";
+    let gh = "V-Vincen";
+    let ghPages = gh + ".github.io";
+    let pagePath = "archives/2020/index.html";
+    let jsdelivrurl;
+    if (pagePath.indexOf("index.html") != -1) {
+      jsdelivrurl = jsdelivr + gh + "/" + ghPages;
+    }else{
+      jsdelivrurl = jsdelivr + gh + "/" + ghPages + "/" + pagePath;
+    }
+    imgUrl.forEach(item => {
+      let oldUrl = item.getAttribute("src");
+      let newUrl = oldUrl.replace(oldUrl, jsdelivrurl + oldUrl).replace("..","");
+      item.setAttribute("src", newUrl);
+    });
+  </script>
+  <!-- CDN: jsdelivr end -->
 
 
 
