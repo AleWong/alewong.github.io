@@ -295,6 +295,10 @@
     }
 
     
+      #signature {/*signature*/
+        background-image: url('/null');
+      }
+    
   </style>
 
 
@@ -403,6 +407,30 @@
         </ul>
       </div>
       
+      <div class="one-tag-list">
+        <span class="fa fa-calendar-times-o listing-seperator" id="2019">
+          <span class="tag-text">2019</span>
+        </span>
+        <ul>
+          
+          <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+          <li>
+            11-03
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/2019/11/03/Apache-Solr-RCE-via-Velocity-template/" style="color: #0085a1">
+              <span>
+                Apache Solr RCE via-Velocity-template漏洞复现与分析
+              </span>
+            </a>
+            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+          </li>
+          
+        </ul>
+      </div>
+      
 
 
     </div>
@@ -445,6 +473,10 @@
   <!-- no hr -->
   <h5><a href="/tags/">FEATURED TAGS</a></h5>
   <div class="tags">
+    
+    
+    <a href="/tags/#RCE" title="RCE" rel="2">RCE</a>
+    
     
   </div>
 </section>
@@ -510,6 +542,10 @@
       <li>Fastjson-1-2-48-RCE漏洞复现与分析</li>
     </a>
     
+    <a href="../2019/11/03/Apache-Solr-RCE-via-Velocity-template/">
+      <li>Apache Solr RCE via-Velocity-template漏洞复现与分析</li>
+    </a>
+    
   </ul>
 </div>
 
@@ -525,13 +561,29 @@
     <!-- <h5>ARCHIVES</h5> -->
     <h5><a href="/archives/">ARCHIVES</a></h5>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="2020/09/">September 2020</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="2020/09/">September 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="2019/11/">November 2019</a><span class="archive-list-count">1</span></li></ul>
     </div>
 
 
         <hr>
     
         <!-- Categories -->
+
+<!-- <h5>categories</h5> -->
+<h5><a href="/categories/">CATEGORIES</a></h5>
+<div class="widget">
+  <ul>
+    
+    <a href="/categories/#黑盒测试">
+      <li>黑盒测试</li>
+    </a>
+    
+    <a href="/categories/#Java代码审计">
+      <li>Java代码审计</li>
+    </a>
+    
+  </ul>
+</div>
 
 
         <hr>

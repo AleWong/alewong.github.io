@@ -295,6 +295,10 @@
     }
 
     
+      #signature {/*signature*/
+        background-image: url('/null');
+      }
+    
   </style>
 
 
@@ -359,9 +363,57 @@
       <!-- 标签云 -->
       <div id='tag_cloud' class="tags">
         
+        <a href="#黑盒测试" title="黑盒测试" rel="1">黑盒测试</a>
+        
+        <a href="#Java代码审计" title="Java代码审计" rel="1">Java代码审计</a>
+        
       </div>
 
       <!-- 标签列表 -->
+      
+      <div class="one-tag-list">
+        <span class="fa fa-tag listing-seperator" id="黑盒测试">
+          <span class="tag-text">黑盒测试</span>
+        </span>
+        
+        <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+        <div class="post-preview">
+          <a href="/2019/11/03/Apache-Solr-RCE-via-Velocity-template/">
+            <h2 class="post-title">
+              Apache Solr RCE via-Velocity-template漏洞复现与分析
+            </h2>
+            
+          </a>
+          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+        </div>
+        <hr>
+        
+      </div>
+      
+      <div class="one-tag-list">
+        <span class="fa fa-tag listing-seperator" id="Java代码审计">
+          <span class="tag-text">Java代码审计</span>
+        </span>
+        
+        <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+        <div class="post-preview">
+          <a href="/2020/09/10/Fastjson-1-2-48-RCE漏洞复现与分析/">
+            <h2 class="post-title">
+              Fastjson-1-2-48-RCE漏洞复现与分析
+            </h2>
+            
+          </a>
+          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+        </div>
+        <hr>
+        
+      </div>
       
 
     </div>
