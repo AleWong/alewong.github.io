@@ -330,11 +330,11 @@
             <!-- WordCount start -->
             <div class="blank_box"></div>
             <span class="meta">
-              Estimated Reading Time <span class="post-count">7</span> Minutes
+              Estimated Reading Time <span class="post-count">8</span> Minutes
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">1.7k</span> In Total
+              Words <span class="post-count">1.9k</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- 不蒜子统计 start -->
@@ -402,6 +402,8 @@
 <li>基于rmi的利用方式：适用jdk版本：<code>JDK 6u132</code>, <code>JDK 7u122</code>, <code>JDK 8u113</code>之前。</li>
 </ul>
 <h3 id="checkAutoType绕过"><a href="#checkAutoType绕过" class="headerlink" title="checkAutoType绕过"></a>checkAutoType绕过</h3><p>checkAutotype会先进行黑白名单的过滤，如果要反序列化的类不在黑白名单中，那么才会对目标类进行反序列化。可fastjson会在加载类时去掉className前后的L 和 ；，据此特性，只要用Lcom.sun.rowset.JdbcRowSetImpl;即可绕过检查，且双写LL和 ;; 依然可以绕过检查。同时，fastjson 对[ 也做了处理。</p>
+<p>关于添加 L 和 ; 绕过的原因(来自 <a href="https://www.t00ls.net/space.php?uid=13393" target="_blank" rel="noopener">LzSkyline</a> 的补充)<br>这个其实是类描述符的特征. fastjson使用了字符串判断的方式去检测传入的内容是否符合这个特征, 如果符合就掐头去尾重新生成类(FastJson允许反序列化任何对象, 所以也需要支持各种描述符)<br>public static Class&lt;?&gt; loadClass(String className, ClassLoader classLoader, boolean cache) {<br>  if (className != null &amp;&amp; className.length() != 0) {<br>     …………<br>  } else if (className.startsWith(“L”) &amp;&amp; className.endsWith(“;”)) {<br>     String newClassName = className.substring(1, className.length() - 1);<br>     return loadClass(newClassName, classLoader);</p>
+<p>类描述符是JNI(JavaNative Interface)字段描述符的一种, 以L开头；结尾, 比如:<br>Ljava/lang/String; 就是对String类的描述</p>
 <h3 id="缓存机制"><a href="#缓存机制" class="headerlink" title="缓存机制"></a>缓存机制</h3><p>Fastjson 的全局缓存在autotype没有开启的时候会从缓存获取类，当把恶意类加载到缓存中时，又可以绕过黑白名单的检测了。例如 java.lang.Class</p>
 <h3 id="异常的利用"><a href="#异常的利用" class="headerlink" title="异常的利用"></a>异常的利用</h3><p>Fastjson 反序列化处理类用到 ThrowableDeserializer，在ThrowableDeserializer#deserialze的方法中，当有一个字段的key也是 @type时，就会把这个 value 当做类名，然后进行一次 checkAutoType 检测。当指定expectClass ，既可通过校验。所以攻击者利用在反序列化的时执行getter(把一个Java对象转换成字符串的方式之一)，攻击者自定义一个异常，就可以调用Exception类中的getMessage方法。</p>
 <h2 id="二、调试分析"><a href="#二、调试分析" class="headerlink" title="二、调试分析"></a>二、调试分析</h2><p>1.首先看到payload传入了text中<br><img src="/img/Fastjson-1-2-48-RCE%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0%E4%B8%8E%E5%88%86%E6%9E%90/3.png" alt="text"></p>
