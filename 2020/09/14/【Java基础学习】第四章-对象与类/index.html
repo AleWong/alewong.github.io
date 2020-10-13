@@ -330,11 +330,11 @@
             <!-- WordCount start -->
             <div class="blank_box"></div>
             <span class="meta">
-              Estimated Reading Time <span class="post-count">1</span> Minutes
+              Estimated Reading Time <span class="post-count">2</span> Minutes
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">104</span> In Total
+              Words <span class="post-count">627</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- 不蒜子统计 start -->
@@ -395,7 +395,15 @@
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h3 id="本系列博文是《Java核心技术-卷一》的读书笔记，内容仅供参考。"><a href="#本系列博文是《Java核心技术-卷一》的读书笔记，内容仅供参考。" class="headerlink" title="本系列博文是《Java核心技术 卷一》的读书笔记，内容仅供参考。"></a>本系列博文是《Java核心技术 卷一》的读书笔记，内容仅供参考。</h3><h2 id="面向对象程序概述"><a href="#面向对象程序概述" class="headerlink" title="面向对象程序概述"></a>面向对象程序概述</h2><p>OOP 面向对象的程序是由对象组成的，每个对象包含对用户【公开的特定功能部分】和【隐藏的实现部分】。很多对象来自标准库。OOP中先组织数据，再确定如何操作数据的算法。</p>
-<h3 id="类"><a href="#类" class="headerlink" title="类"></a>类</h3>
+<h3 id="类"><a href="#类" class="headerlink" title="类"></a>类</h3><p>类(class)是构造对象的蓝图或模版。Java编写的所有代码都位于某个类的内部。</p>
+<h3 id="封装-Encapsulation-数据隐藏"><a href="#封装-Encapsulation-数据隐藏" class="headerlink" title="封装 Encapsulation 数据隐藏"></a>封装 Encapsulation 数据隐藏</h3><p>封装将数据和行为组合在一个包中，并对对象的使用者隐藏了数据的实现方法。对象中的数据称为实例域instance field，操纵数据的过程称为方法method。对于每个特定类实例(对象)都有一组特定的实例域值。这些值的集合就是这个对象的当前状态。无论何时，只要向对象发送一条消息，它的状态就有可能发生改变。</p>
+<p>实现封装的关键在于【绝对不能】让类中的方法直接的访问其他类的实例域。程序仅通过对象的方法与对象进行数据交互。封装给对象赋予了“黑盒”特征。</p>
+<p>OOP可以通过扩展一个类来建立另外一个新的类。在Java中所有类都源于超类Object。扩展一个已有的类时，这个扩展后的新类具有所扩展的类的全部属性和方法。在新类中，只需提供适用于这个新类的新方法和数据域就可以了。通过扩展一个类来建立另一个类的过程称为继承 inheritance。</p>
+<h3 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h3><p>三个主要特性：</p>
+<p>对象的行为：可以对对象施加哪些操作，或可以对对象实施哪些方法？对象的行为可以调用方法定义。</p>
+<p>对象的状态：当施加哪些方法时，对象如何响应？每个对象都保存着描述当前特征的信息。对象状态的改变必须通过调用方法实现 ( 如果不经过方法调用就可以改变对象状态， 只能说明封装性遭到了破坏 。)</p>
+<p>对象标识：如何辨别具有相同行为与状态的不同对象？作为一个类的实例， 每个对象的标识永远是不同的， 状态常常也存在着差异。</p>
+<h3 id="识别类"><a href="#识别类" class="headerlink" title="识别类"></a>识别类</h3>
 
         <hr>
         <!-- Pager -->
@@ -537,7 +545,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#前言"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">前言</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#本系列博文是《Java核心技术-卷一》的读书笔记，内容仅供参考。"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">本系列博文是《Java核心技术 卷一》的读书笔记，内容仅供参考。</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#面向对象程序概述"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">面向对象程序概述</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#类"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">类</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#前言"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">前言</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#本系列博文是《Java核心技术-卷一》的读书笔记，内容仅供参考。"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">本系列博文是《Java核心技术 卷一》的读书笔记，内容仅供参考。</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#面向对象程序概述"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">面向对象程序概述</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#类"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">类</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#封装-Encapsulation-数据隐藏"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">封装 Encapsulation 数据隐藏</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#对象"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">对象</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#识别类"><span class="toc-nav-number">2.4.</span> <span class="toc-nav-text">识别类</span></a></li></ol></li></ol>
         
         </div>
       </aside>
