@@ -330,11 +330,11 @@
             <!-- WordCount start -->
             <div class="blank_box"></div>
             <span class="meta">
-              Estimated Reading Time <span class="post-count">2</span> Minutes
+              Estimated Reading Time <span class="post-count">3</span> Minutes
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">627</span> In Total
+              Words <span class="post-count">1k</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- 不蒜子统计 start -->
@@ -403,7 +403,20 @@
 <p>对象的行为：可以对对象施加哪些操作，或可以对对象实施哪些方法？对象的行为可以调用方法定义。</p>
 <p>对象的状态：当施加哪些方法时，对象如何响应？每个对象都保存着描述当前特征的信息。对象状态的改变必须通过调用方法实现 ( 如果不经过方法调用就可以改变对象状态， 只能说明封装性遭到了破坏 。)</p>
 <p>对象标识：如何辨别具有相同行为与状态的不同对象？作为一个类的实例， 每个对象的标识永远是不同的， 状态常常也存在着差异。</p>
-<h3 id="识别类"><a href="#识别类" class="headerlink" title="识别类"></a>识别类</h3>
+<h3 id="识别类"><a href="#识别类" class="headerlink" title="识别类"></a>识别类</h3><p>编写程序可以从设计类开始， 然后再往每个类中添加方法。识别类的简单规则是在【分析问题的过程中寻找名词】， 而方法对应着动词。</p>
+<h3 id="类之间的关系"><a href="#类之间的关系" class="headerlink" title="类之间的关系"></a>类之间的关系</h3><h2 id="使用预定义类"><a href="#使用预定义类" class="headerlink" title="使用预定义类"></a>使用预定义类</h2><h3 id="对象与对象变量"><a href="#对象与对象变量" class="headerlink" title="对象与对象变量"></a>对象与对象变量</h3><p>想使用对象， 就必须首先构造对象， 并指定其初始状态。然后， 对对象应用方法。</p>
+<p> 使用构造器(constructor) 构造新实例。 构造器是一种特殊的方法， 用来构造并初始化对象。 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Date();</span><br></pre></td></tr></table></figure>
+
+<p>通常， 希望构造的对象可以多次使用， 因 此， 需要将对象存放在一个变量中:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Date birthday = <span class="keyword">new</span> Date();</span><br></pre></td></tr></table></figure>
+
+<h4 id="对象与对象变量之间的区别："><a href="#对象与对象变量之间的区别：" class="headerlink" title="对象与对象变量之间的区别："></a>对象与对象变量之间的区别：</h4><p>对象变量不是对象，一个对象变量并没有实际包含一个对象， 而仅仅引用一个对象。在 Java 中， 任何对象变量的值都是对存储在另外一个地方的一个对象的引用。new 操作 符的返回值也是一个引用。 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Date deadline = <span class="keyword">new</span> Date();</span><br><span class="line"><span class="comment">// new Date()构造了Date类型对象，它的值是新建对象的引用。引用存储在变量deadline中。</span></span><br><span class="line">deadline = <span class="keyword">null</span>;</span><br><span class="line"><span class="comment">//对象变量目前没有引用任何对象。局部变量不会自动地初始化为null，必须通过调用new或将它们设置为null进行初始化。</span></span><br></pre></td></tr></table></figure>
+
+<p>所有的 Java 对象都存储在堆中。 当一个对象包含另一个对象变量时， 这个变量依然 包含着指向另一个堆对象的指针。</p>
+<p>最好使用不同的类表示不同的概念。</p>
+
 
         <hr>
         <!-- Pager -->
@@ -545,7 +558,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#前言"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">前言</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#本系列博文是《Java核心技术-卷一》的读书笔记，内容仅供参考。"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">本系列博文是《Java核心技术 卷一》的读书笔记，内容仅供参考。</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#面向对象程序概述"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">面向对象程序概述</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#类"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">类</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#封装-Encapsulation-数据隐藏"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">封装 Encapsulation 数据隐藏</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#对象"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">对象</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#识别类"><span class="toc-nav-number">2.4.</span> <span class="toc-nav-text">识别类</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#前言"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">前言</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#本系列博文是《Java核心技术-卷一》的读书笔记，内容仅供参考。"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">本系列博文是《Java核心技术 卷一》的读书笔记，内容仅供参考。</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#面向对象程序概述"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">面向对象程序概述</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#类"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">类</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#封装-Encapsulation-数据隐藏"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">封装 Encapsulation 数据隐藏</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#对象"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">对象</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#识别类"><span class="toc-nav-number">2.4.</span> <span class="toc-nav-text">识别类</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#类之间的关系"><span class="toc-nav-number">2.5.</span> <span class="toc-nav-text">类之间的关系</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#使用预定义类"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">使用预定义类</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#对象与对象变量"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">对象与对象变量</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#对象与对象变量之间的区别："><span class="toc-nav-number">3.1.1.</span> <span class="toc-nav-text">对象与对象变量之间的区别：</span></a></li></ol></li></ol></li></ol>
         
         </div>
       </aside>
