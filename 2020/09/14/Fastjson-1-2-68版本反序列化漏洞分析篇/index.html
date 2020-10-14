@@ -392,9 +392,10 @@
       <!-- Post Container -->
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
-        <p>title: Fastjson &lt; 1.2.68版本反序列化漏洞分析篇<br>catalog: true<br>date: 2020-09-14 14:15:50<br>subtitle:<br>header-img:<br>tags: RCE<br>categories: Java代码审计</p>
-<h1 id="Fastjson-lt-1-2-68版本反序列化漏洞分析篇"><a href="#Fastjson-lt-1-2-68版本反序列化漏洞分析篇" class="headerlink" title="Fastjson &lt; 1.2.68版本反序列化漏洞分析篇"></a>Fastjson &lt; 1.2.68版本反序列化漏洞分析篇</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>刚接触Java审计，感觉很有趣，希望自己能坚持下去，也希望各位前辈能在看完我的分析后给予专业性的指导。</p>
-<h2 id="一、漏洞概述"><a href="#一、漏洞概述" class="headerlink" title="一、漏洞概述"></a>一、漏洞概述</h2><p>在之前其他大佬文章中，我们可以看到的利用方式为通过清空指定文件向指定文件写入指定内容(用到第三方库)。当gadget是继承的第一个类的子类的时候，满足攻击fastjson的条件。此时寻找到的需要gadget满足能利用期望类绕过checkAutoType。本文分析了一种利用反序列化指向fastjson自带类进行攻击利用，可实现SSRF攻击等。</p>
+        <p>title: Fastjson &lt; 1.2.68版本反序列化漏洞分析篇<br>catalog: true<br>date: 2020-09-14 14:15:50<br>subtitle:<br>header-img:<br>tags:<br>categories: Java代码审计</p>
+<h1 id="Fastjson-lt-1-2-68版本反序列化漏洞分析篇"><a href="#Fastjson-lt-1-2-68版本反序列化漏洞分析篇" class="headerlink" title="Fastjson &lt; 1.2.68版本反序列化漏洞分析篇"></a>Fastjson &lt; 1.2.68版本反序列化漏洞分析篇</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>迟到的Fastjson反序列化漏洞分析，按照国际惯例这次依旧没有放poc。道理还是那个道理，但利用方式多种多样。除了之前放出来用于文件读写的利用方式以外其实还可以用于SSRF。<br>刚接触Java审计，感觉很有趣，希望自己能坚持下去，也希望各位前辈能在看完我的分析后给予专业性的指导。</p>
+<h2 id="一、漏洞概述"><a href="#一、漏洞概述" class="headerlink" title="一、漏洞概述"></a>一、漏洞概述</h2><p>在之前其他大佬文章中，我们可以看到的利用方式为通过清空指定文件向指定文件写入指定内容(用到第三方库)。当gadget是继承的第一个类的子类的时候，满足攻击fastjson的条件。此时寻找到的需要gadget满足能利用期望类绕过checkAutoType。</p>
+<p>本文分析了一种利用反序列化指向fastjson自带类进行攻击利用，可实现SSRF攻击等。</p>
 <h2 id="二、调试分析"><a href="#二、调试分析" class="headerlink" title="二、调试分析"></a>二、调试分析</h2><p>首先，parseObject方法对传入的数据进行处理。通过词法解析得到类型名称，如果不是数字则开始checkAutoType检查。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!allDigits) &#123;</span><br><span class="line">                            clazz = config.checkAutoType(typeName, <span class="keyword">null</span>, lexer.getFeatures());</span><br><span class="line">                        &#125;</span><br></pre></td></tr></table></figure>
 
